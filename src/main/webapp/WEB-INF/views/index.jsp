@@ -62,7 +62,8 @@
 			<div class="swiper-wrapper">
 				<c:forEach var="shoesList" items="${shoesList}" end="2"
 					varStatus="status">
-					<div class="swiper-slide" <c:if test="${'Y' eq shoesList.launched}">style="display:none"</c:if>>
+					<div class="swiper-slide" 
+					<c:if test="${'Y' eq shoesList.launched}">style="display:none"</c:if>>
 						<!-- 발매남은시간 -->
 						<div class="s-launches__hero__info">
 							<!---->
@@ -87,9 +88,8 @@
 							</div>
 						</div>
 						<!-- 발매남은시간 -->
-						<img style="width: inherit; height: inherit;"
-							src="/image/hero-landscape1.png"> <input id="release-date"
-							value="${shoesList.release_date}" />
+						<img style="width: inherit; height: inherit;" src="/image/${shoesList.main_image_name}"> 
+						<input id="release-date" value="${shoesList.release_date}" />
 					</div>
 				</c:forEach>
 			</div>
@@ -110,7 +110,7 @@
 					<div class="item-product-info-wrapper">
 						<a class="product-thumbnail-img"> <img
 							<c:if test="${'Y' eq shoesList.launched}">style="opacity:.6"</c:if>
-							src="${Path}/resources/images/shoes/<c:out value="${shoesList.product_num}"/>.jpg">
+							src="/image/<c:out value="${shoesList.product_num}"/>.jpg">
 						</a>
 						<div class="product-info">
 							<h2 class="thumbnail__product__name">
@@ -180,7 +180,10 @@
 					.children().eq(2); //메인 반복문갯수
 			var main3 = $(".swiper-wrapper").children().eq(2).children()
 					.children().eq(2); //메인 반복문갯수
-alert(''+main1.attr('id'));
+			var input1 = $(".swiper-wrapper").children().eq(0).children().eq(2);
+			var input2 = $(".swiper-wrapper").children().eq(1).children().eq(2);
+			var input3 = $(".swiper-wrapper").children().eq(2).children().eq(2);
+
 			var day1 = main1.children().eq(0).children().eq(0);
 			var hour1 = main1.children().eq(1).children().eq(0);
 			var minute1 = main1.children().eq(2).children().eq(0);
@@ -196,9 +199,9 @@ alert(''+main1.attr('id'));
 			var minute3 = main3.children().eq(2).children().eq(0);
 			var second3 = main3.children().eq(3).children().eq(0);
 
-			var date1 = '${shoesList[status.index eq 0].release_date}';
-			var date2 = '${shoesList[status.index eq 1].release_date}';
-			var date3 = '${shoesList[status.index eq 2].release_date}';
+			var date1 = input1.val();
+			var date2 = input2.val();
+			var date3 = input3.val();
 
 			var end1 = new Date(date1);
 			var end2 = new Date(date2);

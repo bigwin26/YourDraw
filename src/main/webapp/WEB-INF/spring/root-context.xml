@@ -6,33 +6,67 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
-	
-	<!--DataSource default 설정-->
-    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-    <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
-    <property name="url" value="jdbc:mysql://localhost:3306/root?autoReconnect=true&amp;useSSL=false&amp;useUnicode=true&amp;characterEncoding=utf8&amp;serverTimezone=UTC"/>
-    <property name="username" value="root"/>
-    <property name="password" value="1234"/>
-    </bean>
 
-   <!--  DataSource log4jdbc-log4j2 설정
-      <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"/>
-        <property name="url" value="jdbc:log4jdbc:mysql://127.0.0.1:3306/root?autoReconnect=true&amp;useSSL=false&amp;useUnicode=true&amp;characterEncoding=utf8&amp;serverTimezone=UTC"/>
-        <property name="username" value="root"/>
-        <property name="password" value="1234"/>
-    </bean>
- 
-    SqlSessionFactory 설정 : dataSource를 참조, mybatis-config.xml 경로설정-->
-    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="dataSource" ref="dataSource"/>
-        <property name="mapperLocations" value="classpath:com/drawSneakers/webapp/mybatis/mapper/*.xml"/>
-        <property name="configLocation" value="classpath:/mybatis-config.xml"/>
-    </bean>
+	<!--DataSource default 설정 -->
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName"
+			value="com.mysql.cj.jdbc.Driver" />
+		<property name="url"
+			value="jdbc:mysql://192.168.100.217:3306/root?autoReconnect=true&amp;useSSL=false&amp;useUnicode=true&amp;characterEncoding=utf8&amp;serverTimezone=UTC" />
+		<property name="username" value="root" />
+		<property name="password" value="1234" />
+	</bean>
 
-    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
-        <constructor-arg ref="sqlSessionFactory"/>
-    </bean>
+	<!-- DataSource log4jdbc-log4j2 설정 <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> 
+		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"/> 
+		<property name="url" value="jdbc:log4jdbc:mysql://127.0.0.1:3306/root?autoReconnect=true&amp;useSSL=false&amp;useUnicode=true&amp;characterEncoding=utf8&amp;serverTimezone=UTC"/> 
+		<property name="username" value="root"/> <property name="password" value="1234"/> 
+		</bean> SqlSessionFactory 설정 : dataSource를 참조, mybatis-config.xml 경로설정 -->
+	<bean id="sqlSessionFactory"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mapperLocations"
+			value="classpath:com/drawSneakers/webapp/mybatis/mapper/*.xml" />
+		<property name="configLocation"
+			value="classpath:/mybatis-config.xml" />
+	</bean>
 
-    <context:component-scan base-package="com.drawSneakers.webapp"/>
+	<bean id="sqlSession"
+		class="org.mybatis.spring.SqlSessionTemplate"
+		destroy-method="clearCache">
+		<constructor-arg ref="sqlSessionFactory" />
+	</bean>
+
+	<!-- quartz -->
+	<!-- 테스트용 잡 -->
+	<bean id="testJob"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 서비스 구현 객체의 빈 이름을 인자로 줍니다. -->
+		<property name="targetObject" ref="QuartzService" />
+		<!-- 서비스 객체에서 주기적으로 실행될 메소드른 지정합니다. -->
+		<property name="targetMethod" value="testJobMethod" />
+		<!-- 동시 실행을 방지합니다. -->
+		<property name="concurrent" value="false" />
+	</bean>
+	<!-- 테스트용 트리거 -->
+	<bean id="testJobTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="testJob" />
+		<!-- CronTrigger를 사용하여 2분 간격으로 실행되도록 지정했습니다. -->
+		<property name="cronExpression" value="0 0/30 * * * ?" />
+	</bean>
+
+	<!-- 테스트용 스케줄러 -->
+	<bean id="testJobScheduler"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<!-- 앞에서 설정한 트리거를 등록합니다. 필요하면 여러개 만들어서 등록하면 됩니다. -->
+			<list>
+				<ref bean="testJobTrigger" />
+			</list>
+		</property>
+	</bean>
+	<context:component-scan
+		base-package="com.drawSneakers.webapp" />
 </beans>

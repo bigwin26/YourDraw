@@ -184,29 +184,35 @@
 			var input2 = $(".swiper-wrapper").children().eq(1).children().eq(2);
 			var input3 = $(".swiper-wrapper").children().eq(2).children().eq(2);
 
+			//첫번째 노드 span태그
 			var day1 = main1.children().eq(0).children().eq(0);
 			var hour1 = main1.children().eq(1).children().eq(0);
 			var minute1 = main1.children().eq(2).children().eq(0);
 			var second1 = main1.children().eq(3).children().eq(0);
 
+			//두번째 노드 span태그
 			var day2 = main2.children().eq(0).children().eq(0);
 			var hour2 = main2.children().eq(1).children().eq(0);
 			var minute2 = main2.children().eq(2).children().eq(0);
 			var second2 = main2.children().eq(3).children().eq(0);
 
+			//세번째 노드 span태그
 			var day3 = main3.children().eq(0).children().eq(0);
 			var hour3 = main3.children().eq(1).children().eq(0);
 			var minute3 = main3.children().eq(2).children().eq(0);
 			var second3 = main3.children().eq(3).children().eq(0);
 
+			//시간설정
 			var date1 = input1.val();
 			var date2 = input2.val();
 			var date3 = input3.val();
 
+			//자바스크립트 Date형 변환
 			var end1 = new Date(date1);
 			var end2 = new Date(date2);
 			var end3 = new Date(date3);
 
+			//시간계산을 위한 변수
 			var _second = 1000;
 			var _minute = _second * 60;
 			var _hour = _minute * 60;
@@ -215,10 +221,14 @@
 			var firstJoin = true;
 
 			function showRemaining() {
+				//현재시간
 				var now = new Date();
+				
+				//현재로부터 남은시간 게산
 				var distance1 = end1 - now;
 				var distance2 = end2 - now;
 				var distance3 = end3 - now;
+				
 				//시간이 다되었을경우 이벤트처리
 				if (distance1 < 0) {
 
@@ -229,6 +239,8 @@
 
 					return;
 				}
+				
+				//Span태그에 계산된 시간 넣어주기
 				var days1 = Math.floor(distance1 / _day);
 				var hours1 = Math.floor((distance1 % _day) / _hour);
 				var minutes1 = Math.floor((distance1 % _hour) / _minute);
@@ -262,6 +274,7 @@
 				}
 			}
 
+			//1초마다 반복
 			timer = setInterval(showRemaining, 1000);
 		});
 	</script>

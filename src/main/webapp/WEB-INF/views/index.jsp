@@ -88,7 +88,7 @@
 							</div>
 						</div>
 						<!-- 발매남은시간 -->
-						<img style="width: inherit; height: inherit;" src="/image/${shoesList.main_image_name}"> 
+						<img style="width: inherit; height: inherit;" src="/image/${shoesList.main_image_name}.jpg"> 
 						<input id="release-date" value="${shoesList.release_date}" />
 					</div>
 				</c:forEach>

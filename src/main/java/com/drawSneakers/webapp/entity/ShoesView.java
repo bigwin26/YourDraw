@@ -13,8 +13,8 @@ public class ShoesView extends Shoes {
 	}
 
 	public ShoesView(int id, String name, String product_num, String price, String company, String sex, String like,
-			String comment, String color, String launched, Date release_date) {
-		super(id, name, product_num, price, company, sex, like, comment, color, launched, release_date);
+			String comment, String color, String launched, Date release_date, String launched_site) {
+		super(id, name, product_num, price, company, sex, like, comment, color, launched, release_date, launched_site);
 		// TODO Auto-generated constructor stub
 	}
 

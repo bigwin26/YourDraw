@@ -1,5 +1,8 @@
 package com.drawSneakers.webapp.service;
 
+import java.net.MalformedURLException;
+
 public interface QuartzService {
-	void testJobMethod();
+	void sendFCM();
+	void sendFCMtest();
 }

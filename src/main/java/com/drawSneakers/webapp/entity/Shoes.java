@@ -20,12 +20,13 @@ public class Shoes {
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date release_date;
+	private String launched_site;
 
 	public Shoes() {
 	}
 
 	public Shoes(int id, String name, String product_num, String price, String company, String sex, String like,
-			String comment, String color, String launched, Date release_date) {
+			String comment, String color, String launched, Date release_date, String launched_site) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -38,6 +39,7 @@ public class Shoes {
 		this.color = color;
 		this.launched = launched;
 		this.release_date = release_date;
+		this.launched_site = launched_site;
 	}
 	
 	public int getId() {
@@ -103,6 +105,13 @@ public class Shoes {
 		this.release_date = release_date;
 	}
 	
+	public String getLaunched_site() {
+		return launched_site;
+	}
+
+	public void setLaunched_site(String launched_site) {
+		this.launched_site = launched_site;
+	}
 	public String getLaunched() {
 		return launched;
 	}

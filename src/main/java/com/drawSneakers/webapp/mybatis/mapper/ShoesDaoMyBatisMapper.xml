@@ -8,7 +8,8 @@
 	 <![CDATA[
 		SELECT * FROM shoes_view WHERE release_date > NOW()
 		UNION
-		SELECT * FROM shoes_view WHERE release_date <= NOW();
+		SELECT * FROM shoes_view WHERE release_date <= NOW()
+		ORDER BY release_date DESC;
 	]]>
 	</select>
 </mapper>

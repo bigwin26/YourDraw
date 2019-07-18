@@ -18,6 +18,7 @@
 <link rel="stylesheet" href="${Path}/resources/assets/css/main.css" />
 <noscript>
 	<link rel="stylesheet" href="${Path}/resources/assets/css/noscript.css" />
+	<link rel="stylesheet" href="${Path}/resources/css/index.css">
 </noscript>
 </head>
 <body class="is-preload">
@@ -32,13 +33,27 @@
 			</div>
 			<div class="content">
 				<div class="inner">
-					<h1>Dimension</h1>
-					<p>
-						A fully responsive site template designed by <a
-							href="https://html5up.net">HTML5 UP</a> and released<br /> for
-						free under the <a href="https://html5up.net/license">Creative
-							Commons</a> license.
-					</p>
+					<div class="s-launches__hero__info">
+							<!---->
+							<span id="launches-status">Up next</span>
+							<!---->
+							<h1>NIKE X FEAR OF GOD LOGHT BORN</h1>
+							<!---->
+							<div class="s-launches__hero__info__countdown">
+								<div>
+									<span id="days">0</span><span>Days</span>
+								</div>
+								<div>
+									<span id="hours">0</span><span>Hours</span>
+								</div>
+								<div>
+									<span id="minutes">0</span><span>Minutes</span>
+								</div>
+								<div>
+									<span id="seconds">0</span><span>Seconds</span>
+								</div>
+							</div>
+						</div>
 				</div>
 			</div>
 			<nav>
@@ -425,6 +440,39 @@ print 'It took ' + i + ' iterations to sort the deck.';</code>
 	<script src="${Path}/resources/assets/js/breakpoints.min.js"></script>
 	<script src="${Path}/resources/assets/js/util.js"></script>
 	<script src="${Path}/resources/assets/js/main.js"></script>
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<!-- 카운트다운  -->
+	<script type="text/javascript">
+	$(function() {
+var end = new Date('07/07/2020 20:00');
 
+var _second = 1000;
+var _minute = _second * 60;
+var _hour = _minute * 60;
+var _day = _hour * 24;
+var timer;
+
+function showRemaining() {
+var now = new Date();
+var distance = end - now;
+if (distance < 0) {
+
+clearInterval(timer);
+
+return;
+}
+var days = Math.floor(distance / _day);
+var hours = Math.floor((distance% _day) / _hour);
+var minutes = Math.floor((distance % _hour) / _minute);
+var seconds = Math.floor((distance % _minute) / _second);
+$('#days').html(days);
+$('#hours').html(hours);
+$('#minutes').html(minutes);
+$('#seconds').html(seconds);
+}
+
+timer = setInterval(showRemaining, 1000);
+})
+</script>
 </body>
 </html>

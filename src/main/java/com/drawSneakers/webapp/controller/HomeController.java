@@ -33,4 +33,9 @@ public class HomeController {
 		
 		return "index";
 	}
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	public String home() {
+		
+		return "home";
+	}
 }

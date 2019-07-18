@@ -1,8 +1,8 @@
 package com.drawSneakers.webapp.service;
 
-import java.net.MalformedURLException;
+import java.text.ParseException;
 
 public interface QuartzService {
 	void sendFCM();
-	void sendFCMtest();
+	void sendFCMtest() throws ParseException;
 }

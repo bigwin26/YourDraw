@@ -6,7 +6,7 @@
 	pageEncoding="utf-8"%>
 <html>
 <head>
-<title>Home</title>
+<title>Your Draw</title>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
 <link rel="stylesheet" href="${Path}/resources/css/index.css">
@@ -153,7 +153,9 @@
 		</div>
 		<!--END grid-wrapper -->
 	</div>
-	<!--END main-wrapper --> </main>
+	<!--END main-wrapper --> 
+	</main>
+	
 	<!--메인 스와이퍼 -->
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>

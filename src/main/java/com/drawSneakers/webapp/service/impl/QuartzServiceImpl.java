@@ -7,7 +7,11 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,9 +26,7 @@ public class QuartzServiceImpl implements QuartzService {
 	@Autowired
 	ShoesDao shoesdao;
 	//변수선언
-	private String launchedSite="";
-	private String shoesName="";
-	
+
 	@Override
 	public void sendFCM(){
 		final String apiKey = "AAAAztp4xvQ:APA91bEE2bmkG_UOZtg68pz1wM3MrbZfxN18pLUjQkzk_iOxIid2u-glS805SzvA0SdCig5JFCXrvC62_pIAD5aKdEbg7wzkvcQiKxGB1iqbxtEPD5humKzmrrLfVUT2O5XTCsC2TQtM";
@@ -35,10 +37,9 @@ public class QuartzServiceImpl implements QuartzService {
 			conn.setRequestMethod("POST");
 			conn.setRequestProperty("Content-Type", "application/json");
 			conn.setRequestProperty("Authorization", "key=" + apiKey);
-
 			conn.setDoOutput(true);
 
-			// 이렇게 보내면 주제를 ALL로 지정해놓은 모든 사람들한테 알림을 날려준다.
+			// 이렇게 보내면 주제를 ALL로 지정해놓은 모든 사람들한테 알림을 날려준다. data와 notification을 같이 보낼경우 앱에서 백그라운드로 data를 받아올수없다.
 			//String input = "{\"notification\" : {\"title\" : \"Your Draw! \", \"body\" : \"잠시후 잠실에서 횽주횽의 이지부스트가 없어집니다!\"}, \"to\":\"/topics/ALL\"}";
 			String input = "{\"data\" : {\"title\":\"Your Draw!\",\"content\":\"잠시후 나이키 코리아에서 드로우가 시작됩니다!\",\"drawSite\":\"나이키 코리아\"}, \"to\":\"/topics/ALL\"}";
 			//String input = "{\"notification\" : {\"title\" : \"Your Draw! \", \"body\" : \"FCM DATA보내기 테스트!\"},\"data\" : {\"title\":\"Your Draw!\",\"content\":\"잠시후 드로우가 시작됩니다!\",\"drawSite\":\"나이키 코리아\"}, \"to\":\"/topics/ALL\"}";
@@ -72,21 +73,35 @@ public class QuartzServiceImpl implements QuartzService {
 		catch(IOException e) {
 			System.out.println(e);
 		}
-
 	}
 
 	@Override
-	public void sendFCMtest() {
-		System.out.println("test 진행중");
+	public void sendFCMtest() throws ParseException{
+		SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmm", Locale.KOREA);
 		List<ShoesView> shoesList = shoesdao.shoesInfo();
+		Date now = new Date();
+		String nowDate = format.format(now);
+		String launchedDate = shoesList.get(0).getRelease_date();
+
 		if(shoesList.size()>0) {
 			if(shoesList.size()==1) {
-				launchedSite = shoesList.get(0).getLaunched_site();
-			} else {
 				
+			} else {
+
 			}
 		} else {
 			System.out.println("예정된 드로우가 없습니다.");
 		}
+	}
+	
+	public static String StringReplace(String str){ 
+		String match = "[^\uAC00-\uD7A3xfe0-9a-zA-Z\\s]"; 
+		str = str.replaceAll(match, " "); 					//특수문자 제거
+		str = str.replaceAll(" ", "");	  					//공백제거
+		if(str.length()>12) {
+		str = str.substring(0,12);				//초 제거
+		}
+		System.out.println(str);
+		return str;
 	}
 }

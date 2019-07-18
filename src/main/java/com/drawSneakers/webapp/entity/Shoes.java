@@ -97,7 +97,7 @@ public class Shoes {
 		this.color = color;
 	}
 	public String getRelease_date() {
-		SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss"); //메인화면 카운트다운 보여주기위한 포맷(변경시 카운트다운 작동안함)
 		return format.format(release_date);
 		
 	}

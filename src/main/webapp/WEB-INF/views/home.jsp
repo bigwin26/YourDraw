@@ -11,7 +11,7 @@
 -->
 <html>
 <head>
-<title>Dimension by HTML5 UP</title>
+<title>YourDraw By 대승</title>
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -29,31 +29,32 @@
 		<!-- Header -->
 		<header id="header">
 			<div class="logo">
-				<span class="icon fa-gem"></span>
+				<h1>Your Draw</h1>
 			</div>
 			<div class="content">
 				<div class="inner">
 					<div class="s-launches__hero__info">
-							<!---->
-							<span id="launches-status">Up next</span>
-							<!---->
-							<h1>NIKE X FEAR OF GOD LOGHT BORN</h1>
-							<!---->
-							<div class="s-launches__hero__info__countdown">
-								<div>
-									<span id="days">0</span><span>Days</span>
-								</div>
-								<div>
-									<span id="hours">0</span><span>Hours</span>
-								</div>
-								<div>
-									<span id="minutes">0</span><span>Minutes</span>
-								</div>
-								<div>
-									<span id="seconds">0</span><span>Seconds</span>
-								</div>
+						<!---->
+						<span id="launches-status">Up Next</span>
+						<!---->
+						<h1>${shoesList[0].name}</h1>
+						<!---->
+						<div class="s-launches__hero__info__countdown" style="display:none">
+							<div>
+								<span id="days">0</span><span>Days</span>
+							</div>
+							<div>
+								<span id="hours">0</span><span>Hours</span>
+							</div>
+							<div>
+								<span id="minutes">0</span><span>Minutes</span>
+							</div>
+							<div>
+								<span id="seconds">0</span><span>Seconds</span>
 							</div>
 						</div>
+					</div>
+					<input id="release-date" value="${shoesList[0].release_date}" style="display:none"/>
 				</div>
 			</div>
 			<nav>
@@ -73,7 +74,8 @@
 			<!-- Intro -->
 			<article id="intro">
 				<h2 class="major">Intro</h2>
-				<span class="image main"><img src="${Path}/resources/assets/images/pic01.jpg" alt="" /></span>
+				<span class="image main"><img
+					src="${Path}/resources/assets/images/pic01.jpg" alt="" /></span>
 				<p>
 					Aenean ornare velit lacus, ac varius enim ullamcorper eu. Proin
 					aliquam facilisis ante interdum congue. Integer mollis, nisl amet
@@ -91,13 +93,14 @@
 					lectus. Pellentesque habitant morbi tristique senectus et netus et
 					malesuada fames ac turpis egestas. In non lorem sit amet elit
 					placerat maximus. Pellentesque aliquam maximus risus, vel sed
-					vehicula.</p>
+					vehicula.</p>					
 			</article>
 
 			<!-- Work -->
 			<article id="work">
 				<h2 class="major">Work</h2>
-				<span class="image main"><img src="${Path}/resources/assets/images/pic02.jpg" alt="" /></span>
+				<span class="image main"><img
+					src="${Path}/resources/assets/images/pic02.jpg" alt="" /></span>
 				<p>Adipiscing magna sed dolor elit. Praesent eleifend dignissim
 					arcu, at eleifend sapien imperdiet ac. Aliquam erat volutpat.
 					Praesent urna nisi, fringila lorem et vehicula lacinia quam.
@@ -114,7 +117,8 @@
 			<!-- About -->
 			<article id="about">
 				<h2 class="major">About</h2>
-				<span class="image main"><img src="${Path}/resources/assets/images/pic03.jpg" alt="" /></span>
+				<span class="image main"><img
+					src="${Path}/resources/assets/images/pic03.jpg" alt="" /></span>
 				<p>Lorem ipsum dolor sit amet, consectetur et adipiscing elit.
 					Praesent eleifend dignissim arcu, at eleifend sapien imperdiet ac.
 					Aliquam erat volutpat. Praesent urna nisi, fringila lorem et
@@ -424,15 +428,13 @@ print 'It took ' + i + ' iterations to sort the deck.';</code>
 
 		<!-- Footer -->
 		<footer id="footer">
-			<p class="copyright">
-				&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.
-			</p>
+			<p class="copyright">&copy; Your Draw by KDS</p>
 		</footer>
 
 	</div>
 
 	<!-- BG -->
-	<div id="bg"></div>
+	<div id="bg" style="background-image:url('${Path}/resources/images/shoes/${shoesList[0].main_image_name}.jpg')"></div>
 
 	<!-- Scripts -->
 	<script src="${Path}/resources/assets/js/jquery.min.js"></script>
@@ -440,39 +442,49 @@ print 'It took ' + i + ' iterations to sort the deck.';</code>
 	<script src="${Path}/resources/assets/js/breakpoints.min.js"></script>
 	<script src="${Path}/resources/assets/js/util.js"></script>
 	<script src="${Path}/resources/assets/js/main.js"></script>
-		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<!-- 카운트다운  -->
 	<script type="text/javascript">
 	$(function() {
-var end = new Date('07/07/2020 20:00');
-
-var _second = 1000;
-var _minute = _second * 60;
-var _hour = _minute * 60;
-var _day = _hour * 24;
-var timer;
-
-function showRemaining() {
-var now = new Date();
-var distance = end - now;
-if (distance < 0) {
-
-clearInterval(timer);
-
-return;
-}
-var days = Math.floor(distance / _day);
-var hours = Math.floor((distance% _day) / _hour);
-var minutes = Math.floor((distance % _hour) / _minute);
-var seconds = Math.floor((distance % _minute) / _second);
-$('#days').html(days);
-$('#hours').html(hours);
-$('#minutes').html(minutes);
-$('#seconds').html(seconds);
-}
-
-timer = setInterval(showRemaining, 1000);
-})
-</script>
+		var endDate = $('#release-date').val();
+		var end = new Date(endDate);
+		
+		var _second = 1000;
+		var _minute = _second * 60;
+		var _hour = _minute * 60;
+		var _day = _hour * 24;
+		var timer;
+		var firstJoin = true;
+		
+		function showRemaining() {
+		var now = new Date();
+		var distance = end - now;
+			if (distance < 0) {
+			
+				clearInterval(timer);
+				$('.s-launches__hero__info__countdown').css("display",
+				"none");
+				$("#launches-status").html("DRAW CLOSED");
+		
+				return;
+			}
+		var days = Math.floor(distance / _day);
+		var hours = Math.floor((distance% _day) / _hour);
+		var minutes = Math.floor((distance % _hour) / _minute);
+		var seconds = Math.floor((distance % _minute) / _second);
+		$('#days').html(days);
+		$('#hours').html(hours);
+		$('#minutes').html(minutes);
+		$('#seconds').html(seconds);
+		
+			if (firstJoin == true) {
+				$('.s-launches__hero__info__countdown').css("display", "");
+				firstJoin = false;
+			}
+		}
+		
+		timer = setInterval(showRemaining, 1000);
+	})
+	</script>
 </body>
 </html>

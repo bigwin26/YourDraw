@@ -421,7 +421,6 @@ print 'It took ' + i + ' iterations to sort the deck.';</code>
 						</ul>
 					</form>
 				</section>
-
 			</article>
 
 		</div>

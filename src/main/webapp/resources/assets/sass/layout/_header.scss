@@ -70,8 +70,8 @@
 
 			.inner {
 				@include vendor('transition', (
-					'max-height #{_duration(intro)} ease',
-					'padding #{_duration(intro)} ease',
+					'max-height #{_duration(detail)} ease',
+					'padding #{_duration(detail)} ease',
 					'opacity #{_duration(article)} ease-in-out'
 				));
 				@include vendor('transition-delay', '0.25s');

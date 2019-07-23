@@ -28,7 +28,7 @@
 
 		&:before {
 			@include vendor('transition', 'background-color #{_duration(bg)} ease-in-out');
-			@include vendor('transition-delay', '#{_duration(intro)}');
+			@include vendor('transition-delay', '#{_duration(detail)}');
 			background-image:		linear-gradient(to top, #{_palette(bg-overlay)}, #{_palette(bg-overlay)}),
 									url('../images/overlay.png');
 			background-size:		auto,

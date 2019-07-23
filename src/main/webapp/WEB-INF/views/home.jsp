@@ -11,7 +11,7 @@
 -->
 <html>
 <head>
-<title>YourDraw By 대승</title>
+<title>YourDraw</title>
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -59,10 +59,10 @@
 			</div>
 			<nav>
 				<ul>
-					<li><a href="#intro">Intro</a></li>
-					<li><a href="#work">Work</a></li>
-					<li><a href="#about">About</a></li>
-					<li><a href="#contact">Contact</a></li>
+					<li><a href="#detail">Detail</a></li>
+					<li><a href="#nextDraw">Next Draw</a></li>
+					<li><a href="#about">Past Draw</a></li>
+					<li><a href="#contact">Exchange Rate</a></li>
 					<!--<li><a href="#elements">Elements</a></li>-->
 				</ul>
 			</nav>
@@ -72,7 +72,7 @@
 		<div id="main">
 
 			<!-- Intro -->
-			<article id="intro">
+			<article id="detail">
 				<h2 class="major">Intro</h2>
 				<span class="image main"><img
 					src="${Path}/resources/assets/images/pic01.jpg" alt="" /></span>
@@ -97,7 +97,7 @@
 			</article>
 
 			<!-- Work -->
-			<article id="work">
+			<article id="nextDraw">
 				<h2 class="major">Work</h2>
 				<span class="image main"><img
 					src="${Path}/resources/assets/images/pic02.jpg" alt="" /></span>
@@ -444,6 +444,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code>
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<!-- 카운트다운  -->
 	<script type="text/javascript">
+	//카운트다운
 	$(function() {
 		var endDate = $('#release-date').val();
 		var end = new Date(endDate);
@@ -483,6 +484,12 @@ print 'It took ' + i + ' iterations to sort the deck.';</code>
 		}
 		
 		timer = setInterval(showRemaining, 1000);
+	})
+	
+	//보수중 이벤트
+	$("nav a").on('click', function(e){
+		alert("준비중 입니다.");
+		e.preventDefault();
 	})
 	</script>
 </body>

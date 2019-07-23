@@ -81,8 +81,8 @@ public class QuartzServiceImpl implements QuartzService {
 		List<ShoesView> shoesList = shoesdao.shoesInfo();
 		Date now = new Date();
 		String nowDate = format.format(now);
-		String launchedDate = shoesList.get(0).getRelease_date();
-
+		//launchedDate를 date형식으로 가져와야함 답안나옴.
+		
 		if(shoesList.size()>0) {
 			if(shoesList.size()==1) {
 				
@@ -103,5 +103,17 @@ public class QuartzServiceImpl implements QuartzService {
 		}
 		System.out.println(str);
 		return str;
+	}
+	
+	public static int getYMD(String str){ 
+		str = str.substring(0, 8);
+		int i = Integer.parseInt(str);
+		return i;
+	}
+	
+	public static int getHM(String str){ 
+		str = str.substring(8, 12);
+		int i = Integer.parseInt(str);
+		return i;
 	}
 }

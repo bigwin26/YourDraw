@@ -158,7 +158,7 @@
 	
 	<!--메인 스와이퍼 -->
 	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
+		src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"> </script>
 	<script type="text/javascript">
 		new Swiper('.swiper-container', {
 			pagination : { // 페이징 설정

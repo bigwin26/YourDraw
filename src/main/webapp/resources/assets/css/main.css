@@ -1622,3 +1622,17 @@ body.is-article-visible #footer {
 body.is-preload #footer {
 	opacity: 0;
 }
+
+/* * @ article CSS * ------------------------------- */
+.grid-item{
+	text-align: center;
+}
+.product-thumbnail-img {
+	display: inline-block;
+	margin-bottom: 18px;
+	width: 80%;
+}
+.product-thumbnail-img img {
+	width: 100%;
+}
+/* * END - @ MAIN CSS * ------------------------------- */

@@ -4,11 +4,11 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.drawSneakers.webapp.dao.ShoesDao">
-	<select id="shoesInfo" resultType="ShoesView">
+	<select id="shoesInfo" resultType="Shoes">
 	 <![CDATA[
-		SELECT * FROM shoes_view WHERE release_date > NOW()
+		SELECT * FROM shoeinfo WHERE release_date > NOW()
 		UNION
-		SELECT * FROM shoes_view WHERE release_date <= NOW()
+		SELECT * FROM shoeinfo WHERE release_date <= NOW()
 		ORDER BY release_date DESC;
 	]]>
 	</select>

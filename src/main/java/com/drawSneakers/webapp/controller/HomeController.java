@@ -10,7 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.drawSneakers.webapp.entity.ShoesView;
+import com.drawSneakers.webapp.entity.Shoes;
 import com.drawSneakers.webapp.service.ShoesService;
 
 /**
@@ -28,14 +28,14 @@ public class HomeController {
 	 */
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String index(Model model) {
-		List<ShoesView> shoesList = shoesService.shoesInfo();
+		List<Shoes> shoesList = shoesService.shoesInfo();
 		model.addAttribute("shoesList", shoesList);
 		
 		return "index";
 	}
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public String home(Model model) {
-		List<ShoesView> shoesList = shoesService.shoesInfo();
+		List<Shoes> shoesList = shoesService.shoesInfo();
 		model.addAttribute("shoesList", shoesList);
 		return "home";
 	}

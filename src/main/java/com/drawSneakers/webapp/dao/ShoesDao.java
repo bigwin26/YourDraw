@@ -2,9 +2,9 @@ package com.drawSneakers.webapp.dao;
 
 import java.util.List;
 
-import com.drawSneakers.webapp.entity.ShoesView;
+import com.drawSneakers.webapp.entity.Shoes;
 
 public interface ShoesDao {
 
-	List<ShoesView> shoesInfo();
+	List<Shoes> shoesInfo();
 }

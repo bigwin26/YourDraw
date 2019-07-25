@@ -7,6 +7,5 @@
 
     <typeAliases>
         <typeAlias type="com.drawSneakers.webapp.entity.Shoes" alias="Shoes"/>
-        <typeAlias type="com.drawSneakers.webapp.entity.ShoesView" alias="ShoesView"/>
     </typeAliases>
 </configuration>

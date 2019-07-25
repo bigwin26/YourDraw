@@ -17,7 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.drawSneakers.webapp.dao.ShoesDao;
-import com.drawSneakers.webapp.entity.ShoesView;
+import com.drawSneakers.webapp.entity.Shoes;
 import com.drawSneakers.webapp.service.QuartzService;
 
 
@@ -78,7 +78,7 @@ public class QuartzServiceImpl implements QuartzService {
 	@Override
 	public void sendFCMtest() throws ParseException{
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmm", Locale.KOREA);
-		List<ShoesView> shoesList = shoesdao.shoesInfo();
+		List<Shoes> shoesList = shoesdao.shoesInfo();
 		Date now = new Date();
 		String nowDate = format.format(now);
 		//launchedDate를 date형식으로 가져와야함 답안나옴.

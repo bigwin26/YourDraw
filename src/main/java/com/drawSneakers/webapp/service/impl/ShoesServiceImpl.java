@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.drawSneakers.webapp.dao.ShoesDao;
 import com.drawSneakers.webapp.entity.Shoes;
-import com.drawSneakers.webapp.entity.ShoesView;
 import com.drawSneakers.webapp.service.ShoesService;
 
 @Service
@@ -22,7 +21,7 @@ public class ShoesServiceImpl implements ShoesService {
     }
 
 	@Override
-	public List<ShoesView> shoesInfo() {
+	public List<Shoes> shoesInfo() {
 		return shoesDao.shoesInfo();
 	}
 }

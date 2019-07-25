@@ -39,7 +39,8 @@
 						<!---->
 						<h1>${shoesList[0].name}</h1>
 						<!---->
-						<div class="s-launches__hero__info__countdown" style="display:none">
+						<div class="s-launches__hero__info__countdown"
+							style="display: none">
 							<div>
 								<span id="days">0</span><span>Days</span>
 							</div>
@@ -54,7 +55,8 @@
 							</div>
 						</div>
 					</div>
-					<input id="release-date" value="${shoesList[0].release_date}" style="display:none"/>
+					<input id="release-date" value="${shoesList[0].release_date}"
+						style="display: none" />
 				</div>
 			</div>
 			<nav>
@@ -73,27 +75,20 @@
 
 			<!-- Intro -->
 			<article id="detail">
-				<h2 class="major">Intro</h2>
+				<h2 class="major">${shoesList[0].name}</h2>
 				<span class="image main"><img
-					src="${Path}/resources/assets/images/pic01.jpg" alt="" /></span>
+					src="${Path}/resources/images/shoes/${shoesList[0].product_num}.jpg"
+					alt="" /></span>
 				<p>
-					Aenean ornare velit lacus, ac varius enim ullamcorper eu. Proin
-					aliquam facilisis ante interdum congue. Integer mollis, nisl amet
-					convallis, porttitor magna ullamcorper, amet egestas mauris. Ut
-					magna finibus nisi nec lacinia. Nam maximus erat id euismod
-					egestas. By the way, check out my <a href="#work">awesome work</a>.
+					Aggressively styled and set upon an iconic Nike sole, these
+					all-black Shox TLs are a slick, street-ready sneaker with attitude
+					in spades. Superfine nylon mesh forms the uppers, overlaid with
+					glossy black piping and a luxe leather Swoosh. Flashes of scarlet
+					streak the tongue and heel for a sharp hit of mouthwatering colour
+					on the otherwise jet palette. The real showstopper here, though, is
+					that pillared sole: debuted in the ‘80s, it’s back with a vengeance
+					and ready for anything.
 				</p>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-					dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora
-					torquent per conubia nostra, per inceptos himenaeos. Etiam
-					tristique libero eu nibh porttitor fermentum. Nullam venenatis erat
-					id vehicula viverra. Nunc ultrices eros ut ultricies condimentum.
-					Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae
-					dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in
-					lectus. Pellentesque habitant morbi tristique senectus et netus et
-					malesuada fames ac turpis egestas. In non lorem sit amet elit
-					placerat maximus. Pellentesque aliquam maximus risus, vel sed
-					vehicula.</p>					
 			</article>
 
 			<!-- Work -->
@@ -433,7 +428,8 @@ print 'It took ' + i + ' iterations to sort the deck.';</code>
 	</div>
 
 	<!-- BG -->
-	<div id="bg" style="background-image:url('${Path}/resources/images/shoes/${shoesList[0].main_image_name}.jpg')"></div>
+	<div id="bg"
+		style="background-image:url('${Path}/resources/images/shoes/${shoesList[0].product_num}-main.jpg')"></div>
 
 	<!-- Scripts -->
 	<script src="${Path}/resources/assets/js/jquery.min.js"></script>
@@ -444,53 +440,53 @@ print 'It took ' + i + ' iterations to sort the deck.';</code>
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<!-- 카운트다운  -->
 	<script type="text/javascript">
-	//카운트다운
-	$(function() {
-		var endDate = $('#release-date').val();
-		var end = new Date(endDate);
-		
-		var _second = 1000;
-		var _minute = _second * 60;
-		var _hour = _minute * 60;
-		var _day = _hour * 24;
-		var timer;
-		var firstJoin = true;
-		
-		function showRemaining() {
-		var now = new Date();
-		var distance = end - now;
-			if (distance < 0) {
-			
-				clearInterval(timer);
-				$('.s-launches__hero__info__countdown').css("display",
-				"none");
-				$("#launches-status").html("DRAW CLOSED");
-		
-				return;
+		//카운트다운
+		$(function() {
+			var endDate = $('#release-date').val();
+			var end = new Date(endDate);
+
+			var _second = 1000;
+			var _minute = _second * 60;
+			var _hour = _minute * 60;
+			var _day = _hour * 24;
+			var timer;
+			var firstJoin = true;
+
+			function showRemaining() {
+				var now = new Date();
+				var distance = end - now;
+				if (distance < 0) {
+
+					clearInterval(timer);
+					$('.s-launches__hero__info__countdown').css("display",
+							"none");
+					$("#launches-status").html("DRAW CLOSED");
+
+					return;
+				}
+				var days = Math.floor(distance / _day);
+				var hours = Math.floor((distance % _day) / _hour);
+				var minutes = Math.floor((distance % _hour) / _minute);
+				var seconds = Math.floor((distance % _minute) / _second);
+				$('#days').html(days);
+				$('#hours').html(hours);
+				$('#minutes').html(minutes);
+				$('#seconds').html(seconds);
+
+				if (firstJoin == true) {
+					$('.s-launches__hero__info__countdown').css("display", "");
+					firstJoin = false;
+				}
 			}
-		var days = Math.floor(distance / _day);
-		var hours = Math.floor((distance% _day) / _hour);
-		var minutes = Math.floor((distance % _hour) / _minute);
-		var seconds = Math.floor((distance % _minute) / _second);
-		$('#days').html(days);
-		$('#hours').html(hours);
-		$('#minutes').html(minutes);
-		$('#seconds').html(seconds);
-		
-			if (firstJoin == true) {
-				$('.s-launches__hero__info__countdown').css("display", "");
-				firstJoin = false;
-			}
-		}
-		
-		timer = setInterval(showRemaining, 1000);
-	})
-	
-	//보수중 이벤트
-	$("nav a").on('click', function(e){
-		alert("준비중 입니다.");
-		e.preventDefault();
-	})
+
+			timer = setInterval(showRemaining, 1000);
+		})
+
+		//보수중 이벤트
+		$("nav a").on('click', function(e) {
+			alert("준비중 입니다.");
+			e.preventDefault();
+		})
 	</script>
 </body>
 </html>

@@ -13,20 +13,18 @@ public class Shoes {
 	private String price;
 	private String company;
 	private String sex;
-	private String like;
 	private String comment;
 	private String color;
 	private String launched;
-	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date release_date;
-	private String launched_site;
+	private String release_url;
 
 	public Shoes() {
 	}
 
-	public Shoes(int id, String name, String product_num, String price, String company, String sex, String like,
-			String comment, String color, String launched, Date release_date, String launched_site) {
+	public Shoes(int id, String name, String product_num, String price, String company, String sex,
+			String comment, String color, String launched, Date release_date) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -34,12 +32,10 @@ public class Shoes {
 		this.price = price;
 		this.company = company;
 		this.sex = sex;
-		this.like = like;
 		this.comment = comment;
 		this.color = color;
 		this.launched = launched;
 		this.release_date = release_date;
-		this.launched_site = launched_site;
 	}
 	
 	public int getId() {
@@ -78,12 +74,6 @@ public class Shoes {
 	public void setSex(String sex) {
 		this.sex = sex;
 	}
-	public String getLike() {
-		return like;
-	}
-	public void setLike(String like) {
-		this.like = like;
-	}
 	public String getComment() {
 		return comment;
 	}
@@ -104,14 +94,6 @@ public class Shoes {
 	public void setRelease_date(Date release_date) {
 		this.release_date = release_date;
 	}
-	
-	public String getLaunched_site() {
-		return launched_site;
-	}
-
-	public void setLaunched_site(String launched_site) {
-		this.launched_site = launched_site;
-	}
 	public String getLaunched() {
 		return launched;
 	}
@@ -120,10 +102,18 @@ public class Shoes {
 		this.launched = launched;
 	}
 
+	public String getRelease_url() {
+		return release_url;
+	}
+
+	public void setRelease_url(String release_url) {
+		this.release_url = release_url;
+	}
+
 	@Override
 	public String toString() {
 		return "Shoes [id=" + id + ", name=" + name + ", product_num=" + product_num + ", price=" + price + ", company="
-				+ company + ", sex=" + sex + ", like=" + like + ", comment=" + comment + ", color=" + color
+				+ company + ", sex=" + sex + ", comment=" + comment + ", color=" + color
 				+ ", launched=" + launched + ", release_date=" + release_date + "]";
 	}
 }

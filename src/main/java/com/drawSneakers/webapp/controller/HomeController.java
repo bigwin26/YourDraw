@@ -27,16 +27,9 @@ public class HomeController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
-	public String index(Model model) {
-		List<Shoes> shoesList = shoesService.shoesInfo();
-		model.addAttribute("shoesList", shoesList);
-		
-		return "index";
-	}
-	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public String home(Model model) {
 		List<Shoes> shoesList = shoesService.shoesInfo();
 		model.addAttribute("shoesList", shoesList);
-		return "home";
+		return "index";
 	}
 }

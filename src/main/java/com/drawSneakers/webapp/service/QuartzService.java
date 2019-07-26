@@ -4,5 +4,5 @@ import java.text.ParseException;
 
 public interface QuartzService {
 	void sendFCM();
-	void sendFCMtest() throws ParseException;
+	void sendFCMtest();
 }

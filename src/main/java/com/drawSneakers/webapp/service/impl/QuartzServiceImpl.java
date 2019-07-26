@@ -76,21 +76,21 @@ public class QuartzServiceImpl implements QuartzService {
 	}
 
 	@Override
-	public void sendFCMtest() throws ParseException{
-		SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmm", Locale.KOREA);
+	public void sendFCMtest(){
+		final String apiKey = "AAAAztp4xvQ:APA91bEE2bmkG_UOZtg68pz1wM3MrbZfxN18pLUjQkzk_iOxIid2u-glS805SzvA0SdCig5JFCXrvC62_pIAD5aKdEbg7wzkvcQiKxGB1iqbxtEPD5humKzmrrLfVUT2O5XTCsC2TQtM";
 		List<Shoes> shoesList = shoesdao.shoesInfo();
-		Date now = new Date();
-		String nowDate = format.format(now);
-		//launchedDate를 date형식으로 가져와야함 답안나옴.
+		//launched가 N인 리스트만 출력하는 쿼리 생성
+		//N일경우 남은시간 출력
+		//시간별로 FCM전송 후 마지막 3차전송(5분남음) 후 UPDATE => launched = Y
 		
-		if(shoesList.size()>0) {
-			if(shoesList.size()==1) {
-				
-			} else {
-
-			}
-		} else {
-			System.out.println("예정된 드로우가 없습니다.");
+		System.out.println("hi");
+		if(shoesList.contains("N")) {
+			System.out.println(shoesList.get(0).getLaunched());
+		}
+		for(int i=0; i<shoesList.size(); i++) {
+			String launchedYN = shoesList.get(i).getLaunched();
+			
+			
 		}
 	}
 	

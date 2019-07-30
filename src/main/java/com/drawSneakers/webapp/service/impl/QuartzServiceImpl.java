@@ -7,11 +7,7 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +15,11 @@ import org.springframework.stereotype.Service;
 import com.drawSneakers.webapp.dao.ShoesDao;
 import com.drawSneakers.webapp.entity.Shoes;
 import com.drawSneakers.webapp.service.QuartzService;
+
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 
 @Service("QuartzService")
@@ -115,5 +116,36 @@ public class QuartzServiceImpl implements QuartzService {
 		str = str.substring(8, 12);
 		int i = Integer.parseInt(str);
 		return i;
+	}
+	
+	@Override
+	public void sendKakao(){
+		OkHttpClient client = new OkHttpClient();
+		RequestBody body = RequestBody.create(null, new byte[]{});
+		Request request = new Request.Builder()
+		  .url("https://kapi.kakao.com/v2/api/talk/memo/default/send?template_object={\"object_type\":\"text\",\"text\":\"에러가 발생했습니다. 에러내용은 차명건입니다.\",\"link\":{\"web_url\": \"https://developers.kakao.com\",\"mobile_web_url\":\"https://developers.kakao.com\"},\"button_title\":\"바로확인\"}")
+		  .post(body)
+		  .addHeader("Content-Type", "application/x-www-form-urlencoded")
+		  .addHeader("Connection", "keep-alive")
+		  .addHeader("Authorization", "Bearer vhlCNbDtQbocth9XC-5I1J0gjD2PywF9azH2dQopyNkAAAFsQRRiyA")
+		  .addHeader("User-Agent", "PostmanRuntime/7.15.2")
+		  .addHeader("Accept", "*/*")
+		  .addHeader("Cache-Control", "no-cache")
+		  .addHeader("Postman-Token", "7acfe00f-885b-4fc4-bb03-901230c37ab6,f5eb5c38-f79e-4a6c-8f53-32449fec6514")
+		  .addHeader("Host", "kapi.kakao.com")
+		  .addHeader("Accept-Encoding", "gzip, deflate")
+		  .addHeader("Content-Length", "")
+		  .addHeader("cache-control", "no-cache")
+		  .build();
+		
+		
+		try {
+			Response response = client.newCall(request).execute();
+			System.out.println(response.body().string());
+			response.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

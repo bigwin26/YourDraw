@@ -32,4 +32,8 @@ public class HomeController {
 		model.addAttribute("shoesList", shoesList);
 		return "index";
 	}
+	@RequestMapping(value = "/ouath", method = RequestMethod.GET)
+	public String kakao(Model model) {
+		return "ouath";
+	}
 }

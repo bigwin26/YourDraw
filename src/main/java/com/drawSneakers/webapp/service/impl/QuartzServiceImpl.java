@@ -26,7 +26,6 @@ import okhttp3.Response;
 public class QuartzServiceImpl implements QuartzService {
 	@Autowired
 	ShoesDao shoesdao;
-	//변수선언
 
 	@Override
 	public void sendFCM(){
@@ -105,19 +104,7 @@ public class QuartzServiceImpl implements QuartzService {
 		System.out.println(str);
 		return str;
 	}
-	
-	public static int getYMD(String str){ 
-		str = str.substring(0, 8);
-		int i = Integer.parseInt(str);
-		return i;
-	}
-	
-	public static int getHM(String str){ 
-		str = str.substring(8, 12);
-		int i = Integer.parseInt(str);
-		return i;
-	}
-	
+
 	@Override
 	public void sendKakao(){
 		OkHttpClient client = new OkHttpClient();

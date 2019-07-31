@@ -6,10 +6,27 @@
 <mapper namespace="com.drawSneakers.webapp.dao.ShoesDao">
 	<select id="shoesInfo" resultType="Shoes">
 	 <![CDATA[
-		SELECT * FROM shoeinfo WHERE release_date > NOW()
+		SELECT * FROM table_shoes WHERE release_date > NOW()
 		UNION
-		SELECT * FROM shoeinfo WHERE release_date <= NOW()
+		SELECT * FROM table_shoes WHERE release_date <= NOW()
 		ORDER BY release_date DESC;
 	]]>
 	</select>
+	
+<!-- 	<insert id="appPush">
+	 <![CDATA[
+		insert into table_app_push
+			(shoes_name,content,push_order,status,status_message) 
+		values
+			("test","test","1차","200","정상");
+	]]>
+	</insert>
+	
+	<update id="shoesInfo" parameterType="AppPush">
+	 <![CDATA[
+		update table_app_push 
+		set push_order = "2차",updt_date= current_timestamp() 
+		where shoes_name = "test";
+	]]>
+	</update> -->
 </mapper>

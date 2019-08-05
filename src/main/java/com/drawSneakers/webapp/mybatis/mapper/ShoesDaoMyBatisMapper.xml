@@ -12,7 +12,14 @@
 		ORDER BY release_date DESC;
 	]]>
 	</select>
-	
+	<select id="pushShoesInfo" resultType="Shoes">
+		SELECT 
+		product_num,name,color,launched,release_date,release_url,release_site,timestampdiff(MINUTE,CURRENT_TIMESTAMP(),release_date) time_remaining 
+		FROM table_shoes 
+		where launched = 'N' 
+		group by name,release_site 
+		order by release_date asc ;
+	</select>
 <!-- 	<insert id="appPush">
 	 <![CDATA[
 		insert into table_app_push

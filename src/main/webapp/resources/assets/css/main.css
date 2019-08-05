@@ -1270,6 +1270,7 @@ body.is-preload #bg:before {
 	display: flex;
 	-webkit-box-pack: center;
 	justify-content: center;
+	min-width: 300px;
 }
 
 .s-launches__hero__info .s-launches__hero__info__countdown div {
@@ -1414,11 +1415,7 @@ body.is-preload #header .content .inner {
 	height: calc(2.1rem);
 	background: #ffffff;
 }
-	#header .logo {
-		width: 4.75rem;
-		height: 4.75rem;
-		line-height: 4.75rem;
-	}
+
 	#header .logo .icon:before {
 		font-size: 1.75rem;
 	}

@@ -7,4 +7,5 @@ import com.drawSneakers.webapp.entity.Shoes;
 public interface ShoesDao {
 
 	List<Shoes> shoesInfo();
+	List<Shoes> pushShoesInfo();
 }

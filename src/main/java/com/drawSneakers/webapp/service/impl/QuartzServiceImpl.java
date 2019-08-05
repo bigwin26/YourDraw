@@ -12,6 +12,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.drawSneakers.webapp.dao.PushDao;
 import com.drawSneakers.webapp.dao.ShoesDao;
 import com.drawSneakers.webapp.entity.Shoes;
 import com.drawSneakers.webapp.service.QuartzService;
@@ -26,9 +27,11 @@ import okhttp3.Response;
 public class QuartzServiceImpl implements QuartzService {
 	@Autowired
 	ShoesDao shoesdao;
+	@Autowired
+	PushDao pushdao;
 
 	@Override
-	public void sendFCM(){
+	public void sendFCM(String content,String siteURL){
 		final String apiKey = "AAAAztp4xvQ:APA91bEE2bmkG_UOZtg68pz1wM3MrbZfxN18pLUjQkzk_iOxIid2u-glS805SzvA0SdCig5JFCXrvC62_pIAD5aKdEbg7wzkvcQiKxGB1iqbxtEPD5humKzmrrLfVUT2O5XTCsC2TQtM";
 		try {
 			URL url = new URL("https://fcm.googleapis.com/fcm/send");
@@ -41,7 +44,7 @@ public class QuartzServiceImpl implements QuartzService {
 
 			// 이렇게 보내면 주제를 ALL로 지정해놓은 모든 사람들한테 알림을 날려준다. data와 notification을 같이 보낼경우 앱에서 백그라운드로 data를 받아올수없다.
 			//String input = "{\"notification\" : {\"title\" : \"Your Draw! \", \"body\" : \"잠시후 잠실에서 횽주횽의 이지부스트가 없어집니다!\"}, \"to\":\"/topics/ALL\"}";
-			String input = "{\"data\" : {\"title\":\"Your Draw!\",\"content\":\"잠시후 나이키 코리아에서 드로우가 시작됩니다!\",\"drawSite\":\"나이키 코리아\"}, \"to\":\"/topics/ALL\"}";
+			String input = "{\"data\" : {\"title\":\"Your Draw!\",\"content\":\""+content+"\",\"drawSite\":\""+siteURL+"\"}, \"to\":\"/topics/ALL\"}";
 			//String input = "{\"notification\" : {\"title\" : \"Your Draw! \", \"body\" : \"FCM DATA보내기 테스트!\"},\"data\" : {\"title\":\"Your Draw!\",\"content\":\"잠시후 드로우가 시작됩니다!\",\"drawSite\":\"나이키 코리아\"}, \"to\":\"/topics/ALL\"}";
 			OutputStream os = conn.getOutputStream();
 
@@ -77,20 +80,43 @@ public class QuartzServiceImpl implements QuartzService {
 
 	@Override
 	public void sendFCMtest(){
-		final String apiKey = "AAAAztp4xvQ:APA91bEE2bmkG_UOZtg68pz1wM3MrbZfxN18pLUjQkzk_iOxIid2u-glS805SzvA0SdCig5JFCXrvC62_pIAD5aKdEbg7wzkvcQiKxGB1iqbxtEPD5humKzmrrLfVUT2O5XTCsC2TQtM";
-		List<Shoes> shoesList = shoesdao.shoesInfo();
+		String shoesName 	= "";
+		String releaseSite	= "";
+		String content 		= "";
+		String pushOrder 	= "";
+		String status 		= "";
+		String statusMessage = "";
+		String siteURL 		= "";
+		
+		List<Shoes> pushShoesList = shoesdao.pushShoesInfo();
+		//DB utf-8설정 필요
+		/*
+		 * int result = pushdao.insertPushResult("test", "test", "test", "1st", "200",
+		 * "success"); if(result == 0) { sendKakao(); }
+		 */
 		//launched가 N인 리스트만 출력하는 쿼리 생성
 		//N일경우 남은시간 출력
 		//시간별로 FCM전송 후 마지막 3차전송(5분남음) 후 UPDATE => launched = Y
-		
-		System.out.println("hi");
-		if(shoesList.contains("N")) {
-			System.out.println(shoesList.get(0).getLaunched());
-		}
-		for(int i=0; i<shoesList.size(); i++) {
-			String launchedYN = shoesList.get(i).getLaunched();
-			
-			
+		if(pushShoesList.size() > 0) {
+			for(int i=0; i<pushShoesList.size(); i++) {
+				int timeRemaing = pushShoesList.get(i).getTime_remaining();
+				releaseSite = pushShoesList.get(i).getRelease_site();
+				siteURL = pushShoesList.get(i).getRelease_url();
+				if(timeRemaing==30) {
+					content = "30분 뒤 "+releaseSite+"에서 드로우가 시작됩니다!";
+					sendFCM(content, siteURL);
+				}
+				if(timeRemaing==10) {
+					content = "10분 뒤 "+releaseSite+"에서 드로우가 시작됩니다!";
+					sendFCM(content, siteURL);
+				}
+				if(timeRemaing==5) {
+					content = "5분 뒤 "+releaseSite+"에서 드로우가 시작됩니다!";
+					sendFCM(content, siteURL);
+				}
+				}
+		} else {
+			System.out.println("예정된 드로우가 없습니다.");
 		}
 	}
 	

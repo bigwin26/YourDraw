@@ -19,12 +19,15 @@ public class Shoes {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date release_date;
 	private String release_url;
+	private String release_site;
+	private int time_remaining;
 
 	public Shoes() {
 	}
 
-	public Shoes(int id, String name, String product_num, String price, String company, String sex,
-			String comment, String color, String launched, Date release_date) {
+	public Shoes(int id, String name, String product_num, String price, String company, String sex, String comment,
+			String color, String launched, Date release_date, String release_url, String release_site,
+			int time_remaining) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -36,8 +39,11 @@ public class Shoes {
 		this.color = color;
 		this.launched = launched;
 		this.release_date = release_date;
+		this.release_url = release_url;
+		this.release_site = release_site;
+		this.time_remaining = time_remaining;
 	}
-	
+
 	public int getId() {
 		return id;
 	}
@@ -108,6 +114,22 @@ public class Shoes {
 
 	public void setRelease_url(String release_url) {
 		this.release_url = release_url;
+	}
+
+	public String getRelease_site() {
+		return release_site;
+	}
+
+	public void setRelease_site(String release_site) {
+		this.release_site = release_site;
+	}
+
+	public int getTime_remaining() {
+		return time_remaining;
+	}
+
+	public void setTime_remaining(int time_remaining) {
+		this.time_remaining = time_remaining;
 	}
 
 	@Override

@@ -1,13 +1,12 @@
 package com.drawSneakers.webapp.entity;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class AppPush {
 	private String shoes_name;
+	private String release_site;
 	private String content;
 	private String push_gubn;
 	private String push_order;
@@ -21,10 +20,12 @@ public class AppPush {
 	public AppPush() {
 	}
 
-	public AppPush(String shoes_name, String content, String push_gubn, String push_order, String status,
-			String status_message, Date reg_date, Date updt_date) {
+
+	public AppPush(String shoes_name, String release_site, String content, String push_gubn, String push_order,
+			String status, String status_message, Date reg_date, Date updt_date) {
 		super();
 		this.shoes_name = shoes_name;
+		this.release_site = release_site;
 		this.content = content;
 		this.push_gubn = push_gubn;
 		this.push_order = push_order;
@@ -40,6 +41,15 @@ public class AppPush {
 
 	public void setShoes_name(String shoes_name) {
 		this.shoes_name = shoes_name;
+	}
+
+	public String getRelease_site() {
+		return release_site;
+	}
+
+
+	public void setRelease_site(String release_site) {
+		this.release_site = release_site;
 	}
 
 	public String getContent() {
@@ -97,6 +107,5 @@ public class AppPush {
 	public void setUpdt_date(Date updt_date) {
 		this.updt_date = updt_date;
 	}
-
 }
 

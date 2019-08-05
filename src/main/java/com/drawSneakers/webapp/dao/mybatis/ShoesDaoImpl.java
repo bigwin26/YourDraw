@@ -20,4 +20,10 @@ public class ShoesDaoImpl implements ShoesDao {
 		ShoesDao shoesDao = sqlsession.getMapper(ShoesDao.class);
 		return shoesDao.shoesInfo();
 	}
+
+	@Override
+	public List<Shoes> pushShoesInfo() {
+		ShoesDao shoesDao = sqlsession.getMapper(ShoesDao.class);
+		return shoesDao.pushShoesInfo();
+	}
 }

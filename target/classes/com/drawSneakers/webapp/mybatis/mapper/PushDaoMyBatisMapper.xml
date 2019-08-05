@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.drawSneakers.webapp.dao.PushDao">
+<insert id="insertPushResult" parameterType="AppPush">
+	 <![CDATA[
+		insert into table_app_push
+			(shoes_name,release_site,content,push_order,status,status_message) 
+		values
+			(#{shoes_name},#{release_site},#{content},#{push_order},#{status},#{status_message});
+	]]>
+	</insert>
+	<!-- 	
+	<update id="shoesInfo" parameterType="AppPush">
+	 <![CDATA[
+		update table_app_push 
+		set push_order = "2차",updt_date= current_timestamp() 
+		where shoes_name = "test";
+	]]>
+	</update> -->
+</mapper>

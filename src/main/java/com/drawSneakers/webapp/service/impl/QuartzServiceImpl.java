@@ -103,15 +103,27 @@ public class QuartzServiceImpl implements QuartzService {
 				releaseSite = pushShoesList.get(i).getRelease_site();
 				siteURL = pushShoesList.get(i).getRelease_url();
 				if(timeRemaing==30) {
-					content = "30분 뒤 "+releaseSite+"에서 드로우가 시작됩니다!";
+					if(releaseSite.equals("END")) {
+						content = "30분 뒤 "+releaseSite+"에서 드로우가 종료됩니다!";
+					}else {
+						content = "30분 뒤 "+releaseSite+"에서 드로우가 시작됩니다!";
+					}
 					sendFCM(content, siteURL);
 				}
 				if(timeRemaing==10) {
-					content = "10분 뒤 "+releaseSite+"에서 드로우가 시작됩니다!";
+					if(releaseSite.equals("END")) {
+						content = "10분 뒤 "+releaseSite+"에서 드로우가 종료됩니다!";
+					}else {
+						content = "10분 뒤 "+releaseSite+"에서 드로우가 시작됩니다!";
+					}
 					sendFCM(content, siteURL);
 				}
 				if(timeRemaing==5) {
-					content = "5분 뒤 "+releaseSite+"에서 드로우가 시작됩니다!";
+					if(releaseSite.equals("END")) {
+						content = "5분 뒤 "+releaseSite+"에서 드로우가 종료됩니다!";
+					}else {
+						content = "5분 뒤 "+releaseSite+"에서 드로우가 시작됩니다!";
+					}
 					sendFCM(content, siteURL);
 				}
 				}

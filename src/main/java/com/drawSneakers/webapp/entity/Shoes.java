@@ -15,6 +15,7 @@ public class Shoes {
 	private String sex;
 	private String comment;
 	private String color;
+	private String method;
 	private String launched;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date release_date;
@@ -26,7 +27,7 @@ public class Shoes {
 	}
 
 	public Shoes(int id, String name, String product_num, String price, String company, String sex, String comment,
-			String color, String launched, Date release_date, String release_url, String release_site,
+			String color,String method, String launched, Date release_date, String release_url, String release_site,
 			int time_remaining) {
 		super();
 		this.id = id;
@@ -37,6 +38,7 @@ public class Shoes {
 		this.sex = sex;
 		this.comment = comment;
 		this.color = color;
+		this.method = method;
 		this.launched = launched;
 		this.release_date = release_date;
 		this.release_url = release_url;
@@ -92,6 +94,15 @@ public class Shoes {
 	public void setColor(String color) {
 		this.color = color;
 	}
+	
+	public String getMethod() {
+		return method;
+	}
+
+	public void setMethod(String method) {
+		this.method = method;
+	}
+
 	public String getRelease_date() {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss"); //메인화면 카운트다운 보여주기위한 포맷(변경시 카운트다운 작동안함)
 		return format.format(release_date);

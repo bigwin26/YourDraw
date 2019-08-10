@@ -36,4 +36,8 @@ public class HomeController {
 	public String kakao(Model model) {
 		return "ouath";
 	}
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String kakaologin(Model model) {
+		return "login";
+	}
 }

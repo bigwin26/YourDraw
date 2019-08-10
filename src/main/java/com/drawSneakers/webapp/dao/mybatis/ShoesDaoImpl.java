@@ -26,4 +26,9 @@ public class ShoesDaoImpl implements ShoesDao {
 		ShoesDao shoesDao = sqlsession.getMapper(ShoesDao.class);
 		return shoesDao.pushShoesInfo();
 	}
+
+	@Override
+	public void updateShoes() {
+		sqlsession.getMapper(ShoesDao.class);		
+	}
 }

@@ -6,15 +6,13 @@
 <mapper namespace="com.drawSneakers.webapp.dao.ShoesDao">
 	<select id="shoesInfo" resultType="Shoes">
 	 <![CDATA[
-		SELECT * FROM table_shoes WHERE release_date > NOW()
-		UNION
-		SELECT * FROM table_shoes WHERE release_date <= NOW()
-		ORDER BY release_date DESC;
+		SELECT * FROM table_shoes WHERE release_date > CURRENT_TIMESTAMP()
+		ORDER BY release_date ASC;
 	]]>
 	</select>
 	<select id="pushShoesInfo" resultType="Shoes">
 		SELECT 
-		product_num,name,color,launched,release_date,release_url,release_site,timestampdiff(MINUTE,CURRENT_TIMESTAMP(),release_date) time_remaining 
+		product_num,name,color,method,launched,release_date,release_url,release_site,timestampdiff(MINUTE,CURRENT_TIMESTAMP(),release_date) time_remaining 
 		FROM table_shoes 
 		where launched = 'N' 
 		group by name,release_site 
@@ -36,4 +34,12 @@
 		where shoes_name = "test";
 	]]>
 	</update> -->
+	<update id="updateShoes" parameterType="Shoes">
+		<![CDATA[
+		UPDATE table_shoes
+		SET launched = 'Y'
+		WHERE release_date < CURRENT_TIMESTAMP();
+	]]>
+	</update>
+	
 </mapper>

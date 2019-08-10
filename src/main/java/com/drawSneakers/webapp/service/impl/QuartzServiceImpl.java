@@ -88,6 +88,8 @@ public class QuartzServiceImpl implements QuartzService {
 		String statusMessage = "";
 		String siteURL 		= "";
 		
+		String productName = "";
+		String method = "";
 		List<Shoes> pushShoesList = shoesdao.pushShoesInfo();
 		//DB utf-8설정 필요
 		/*
@@ -97,32 +99,26 @@ public class QuartzServiceImpl implements QuartzService {
 		//launched가 N인 리스트만 출력하는 쿼리 생성
 		//N일경우 남은시간 출력
 		//시간별로 FCM전송 후 마지막 3차전송(5분남음) 후 UPDATE => launched = Y
+		shoesdao.updateShoes();
 		if(pushShoesList.size() > 0) {
 			for(int i=0; i<pushShoesList.size(); i++) {
 				int timeRemaing = pushShoesList.get(i).getTime_remaining();
 				releaseSite = pushShoesList.get(i).getRelease_site();
 				siteURL = pushShoesList.get(i).getRelease_url();
-				if(timeRemaing==30) {
-					if(releaseSite.equals("END")) {
-						content = "30분 뒤 "+releaseSite+"에서 드로우가 종료됩니다!";
-					}else {
-						content = "30분 뒤 "+releaseSite+"에서 드로우가 시작됩니다!";
-					}
-					sendFCM(content, siteURL);
+				productName = pushShoesList.get(i).getName();
+				method = pushShoesList.get(i).getMethod();
+				System.out.println("hi : "+method);
+				if(method.equals("DRAW")) {
+					method = "드로우";
+				} else {
+					method = "발매";
 				}
-				if(timeRemaing==10) {
+				System.out.println("hi : "+timeRemaing);
+				if(timeRemaing<5 && timeRemaing>0) {
 					if(releaseSite.equals("END")) {
-						content = "10분 뒤 "+releaseSite+"에서 드로우가 종료됩니다!";
+						content = "잠시후 "+releaseSite+"에서 "+productName+"의 "+method+"가 종료됩니다!";
 					}else {
-						content = "10분 뒤 "+releaseSite+"에서 드로우가 시작됩니다!";
-					}
-					sendFCM(content, siteURL);
-				}
-				if(timeRemaing==5) {
-					if(releaseSite.equals("END")) {
-						content = "5분 뒤 "+releaseSite+"에서 드로우가 종료됩니다!";
-					}else {
-						content = "5분 뒤 "+releaseSite+"에서 드로우가 시작됩니다!";
+						content = "잠시후"+releaseSite+"에서 "+productName+"의 "+method+"가 시작됩니다!";
 					}
 					sendFCM(content, siteURL);
 				}

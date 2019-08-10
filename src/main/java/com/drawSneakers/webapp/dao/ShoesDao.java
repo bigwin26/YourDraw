@@ -8,4 +8,5 @@ public interface ShoesDao {
 
 	List<Shoes> shoesInfo();
 	List<Shoes> pushShoesInfo();
+	void updateShoes();
 }

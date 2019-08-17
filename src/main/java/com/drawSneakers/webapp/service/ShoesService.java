@@ -8,4 +8,6 @@ public interface ShoesService {
 	List<Shoes> shoesInfo();
 	List<Shoes> pushShoesInfo();
 	void shoesImageSave(String shoesNum);
+	List<Shoes> getPastDrawList();
+	List<Shoes> getNextDrawList();
 }

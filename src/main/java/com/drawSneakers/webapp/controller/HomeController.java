@@ -29,7 +29,11 @@ public class HomeController {
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String home(Model model) {
 		List<Shoes> shoesList = shoesService.shoesInfo();
+		List<Shoes> PastDrawList = shoesService.getPastDrawList();
+		List<Shoes> NextDrawList = shoesService.getNextDrawList();
 		model.addAttribute("shoesList", shoesList);
+		model.addAttribute("PastDrawList", PastDrawList);
+		model.addAttribute("NextDrawList", NextDrawList);
 		return "index";
 	}
 	@RequestMapping(value = "/ouath", method = RequestMethod.GET)

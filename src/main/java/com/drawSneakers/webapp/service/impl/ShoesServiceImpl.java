@@ -77,4 +77,14 @@ public class ShoesServiceImpl implements ShoesService {
 	public List<Shoes> pushShoesInfo() {
 		return shoesDao.pushShoesInfo();
 	}
+
+	@Override
+	public List<Shoes> getPastDrawList() {
+		return shoesDao.getPastDrawList();
+	}
+
+	@Override
+	public List<Shoes> getNextDrawList() {
+		return shoesDao.getNextDrawList();
+	}
 }

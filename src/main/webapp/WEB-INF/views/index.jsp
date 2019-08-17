@@ -59,7 +59,7 @@
 					<li><a href="#detail">Detail</a></li>
 					<li><a href="#nextDraw">Next Draw</a></li>
 					<li><a href="#pastDraw">Past Draw</a></li>
-					<li><a href="#board">Board</a></li>
+					<li class="ready"><a href="#board">Board</a></li>
 					<!--<li><a href="#elements">Elements</a></li>-->
 				</ul>
 			</nav>
@@ -140,7 +140,7 @@
 		})
 
 		//보수중 이벤트
-		$("nav a").on('click', function(e) {
+		$(".ready").on('click', function(e) {
 			alert("준비중 입니다.");
 			e.preventDefault();
 		})

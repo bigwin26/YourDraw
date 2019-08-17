@@ -14,32 +14,25 @@
 		SELECT 
 		product_num,name,color,method,launched,release_date,release_url,release_site,timestampdiff(MINUTE,CURRENT_TIMESTAMP(),release_date) time_remaining 
 		FROM table_shoes 
-		where launched = 'N' 
-		group by name,release_site 
-		order by release_date asc ;
+		WHERE launched = 'N'
+		GROUP BY name,release_site 
+		ORDER BY release_date ASC;
 	</select>
-<!-- 	<insert id="appPush">
+	<select id="getPastDrawList" resultType="Shoes">
 	 <![CDATA[
-		insert into table_app_push
-			(shoes_name,content,push_order,status,status_message) 
-		values
-			("test","test","1차","200","정상");
+		SELECT * FROM table_shoes WHERE launched = 'Y' ORDER BY release_date DESC LIMIT 10;
 	]]>
-	</insert>
-	
-	<update id="shoesInfo" parameterType="AppPush">
+	</select>
+	<select id="getNextDrawList" resultType="Shoes">
 	 <![CDATA[
-		update table_app_push 
-		set push_order = "2차",updt_date= current_timestamp() 
-		where shoes_name = "test";
+		SELECT * FROM table_shoes WHERE launched = 'N' ORDER BY release_date ASC LIMIT 10;
 	]]>
-	</update> -->
+	</select>
 	<update id="updateShoes" parameterType="Shoes">
 		<![CDATA[
 		UPDATE table_shoes
 		SET launched = 'Y'
-		WHERE release_date < CURRENT_TIMESTAMP();
+		WHERE release_date < CURRENT_TIMESTAMP() AND launched = 'N';
 	]]>
 	</update>
-	
 </mapper>

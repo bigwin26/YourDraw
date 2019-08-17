@@ -8,5 +8,7 @@ public interface ShoesDao {
 
 	List<Shoes> shoesInfo();
 	List<Shoes> pushShoesInfo();
-	void updateShoes();
+	int updateShoes();
+	List<Shoes> getPastDrawList();
+	List<Shoes> getNextDrawList();
 }

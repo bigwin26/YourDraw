@@ -44,4 +44,10 @@ public class ShoesDaoImpl implements ShoesDao {
 		ShoesDao shoesDao = sqlsession.getMapper(ShoesDao.class);
 		return shoesDao.getNextDrawList();
 	}
+
+	@Override
+	public List<Shoes> shoesEndInfo() {
+		ShoesDao shoesDao = sqlsession.getMapper(ShoesDao.class);
+		return shoesDao.shoesEndInfo();
+	}
 }

@@ -106,7 +106,6 @@ public class QuartzServiceImpl implements QuartzService {
 				productName = pushShoesList.get(i).getName();
 				method = pushShoesList.get(i).getMethod();
 				if(timeRemaning > 0) {
-					System.out.println("hi : "+method);
 					if(method.equals("DRAW")) {
 						method = "드로우";
 					} else {

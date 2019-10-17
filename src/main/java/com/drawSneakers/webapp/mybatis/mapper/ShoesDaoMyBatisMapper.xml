@@ -6,8 +6,12 @@
 <mapper namespace="com.drawSneakers.webapp.dao.ShoesDao">
 	<select id="shoesInfo" resultType="Shoes">
 	 <![CDATA[
-		SELECT * FROM table_shoes WHERE release_date > CURRENT_TIMESTAMP()
-		ORDER BY release_date ASC;
+		SELECT * FROM table_shoes WHERE launched = 'N' ORDER BY release_date ASC;
+	]]>
+	</select>
+	<select id="shoesEndInfo" resultType="Shoes">
+	 <![CDATA[
+		SELECT * FROM table_shoes WHERE launched = 'Y' ORDER BY release_date DESC;
 	]]>
 	</select>
 	<select id="pushShoesInfo" resultType="Shoes">

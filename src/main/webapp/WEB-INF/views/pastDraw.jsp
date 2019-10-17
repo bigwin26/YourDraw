@@ -14,17 +14,11 @@
 							<h2 class="thumbnail__product__name">
 								<c:out value="${PastDrawList.name}" />
 							</h2>
-							<span class="thumbnail__product__color"><c:out
-									value="${PastDrawList.color}" /></span> <span
-								<c:if test="${'Y' eq PastDrawList.launched}">style="display:none"</c:if>
-								class="thumbnail__product__price"> <c:out
-									value="${PastDrawList.price}$" /></span>
 						</div>
 					</div>
 					<div class="product-draw-info-wrapper">
 						<div class="product-draw-info">
 							<div class="product-date">
-								<span class="product-date-label">Launch Date</span>
 								<div class="product-release-date">
 									<c:choose>
 										<c:when test="${'N' eq PastDrawList.launched}">
@@ -38,10 +32,8 @@
 							</div>
 						</div>
 					</div>
-					<a
-						<c:if test="${'Y' eq PastDrawList.launched}">style="display:none"</c:if>
-						class="enter-draw-button">Enter Draw</a>
 				</div>
+				<br>
 			</c:forEach>
 
 		</div>

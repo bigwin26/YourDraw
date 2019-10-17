@@ -14,11 +14,15 @@
 							<h2 class="thumbnail__product__name">
 								<c:out value="${NextDrawList.name}" />
 							</h2>
-							<span class="thumbnail__product__color"><c:out
-									value="${NextDrawList.color}" /></span> <span
+							<span class="thumbnail__product__color">
+								<c:out value="${NextDrawList.color}"/>
+							</span>
+							<br>
+							<span
 								<c:if test="${'Y' eq NextDrawList.launched}">style="display:none"</c:if>
-								class="thumbnail__product__price"> <c:out
-									value="${NextDrawList.price}$" /></span>
+							class="thumbnail__product__price"> 
+								<c:out value="${NextDrawList.price}"/>
+							</span>
 						</div>
 					</div>
 					<div class="product-draw-info-wrapper">
@@ -42,8 +46,8 @@
 							</div>
 						</div>
 					</div>
-					<a
-						<c:if test="${'Y' eq NextDrawList.launched}">style="display:none"</c:if>
+					<a href="${NextDrawList.release_url}"
+						<c:if test="${'Y' eq NextDrawList.launched}">style="display:none";</c:if>
 						class="enter-draw-button">Enter Draw</a>
 				</div>
 			</c:forEach>

@@ -11,4 +11,5 @@ public interface ShoesDao {
 	int updateShoes();
 	List<Shoes> getPastDrawList();
 	List<Shoes> getNextDrawList();
+	List<Shoes> shoesEndInfo();
 }

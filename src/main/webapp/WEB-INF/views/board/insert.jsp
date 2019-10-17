@@ -10,9 +10,9 @@
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
-<link rel="stylesheet" href="${Path}/resources/assets/css/main.css" />
+<link rel="stylesheet" href="${Path}/resources/css/main.css" />
 <noscript>
-	<link rel="stylesheet" href="${Path}/resources/assets/css/noscript.css" />
+	<link rel="stylesheet" href="${Path}/resources/css/noscript.css" />
 	<link rel="stylesheet" href="${Path}/resources/css/index.css">
 </noscript>
 </head>
@@ -46,10 +46,10 @@
 	</div>
 	<div id="bg"></div>
 	<!-- Scripts -->
-	<script src="${Path}/resources/assets/js/jquery.min.js"></script>
-	<script src="${Path}/resources/assets/js/browser.min.js"></script>
-	<script src="${Path}/resources/assets/js/breakpoints.min.js"></script>
-	<script src="${Path}/resources/assets/js/util.js"></script>
+	<script src="${Path}/resources/js/jquery.min.js"></script>
+	<script src="${Path}/resources/js/browser.min.js"></script>
+	<script src="${Path}/resources/js/breakpoints.min.js"></script>
+	<script src="${Path}/resources/js/util.js"></script>
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </body>
 </html>

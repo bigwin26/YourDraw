@@ -28,7 +28,11 @@ public class ShoesServiceImpl implements ShoesService {
 
 	@Override
 	public List<Shoes> shoesInfo() {
-		return shoesDao.shoesInfo();
+		if(shoesDao.shoesInfo().size() == 0) {
+			return shoesDao.shoesEndInfo();
+		} else {
+			return shoesDao.shoesInfo();
+		}
 	}
 
 	@Override

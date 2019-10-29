@@ -42,13 +42,9 @@ public class QuartzServiceImpl implements QuartzService {
 			conn.setRequestProperty("Authorization", "key=" + apiKey);
 			conn.setDoOutput(true);
 
-			// 이렇게 보내면 주제를 ALL로 지정해놓은 모든 사람들한테 알림을 날려준다. data와 notification을 같이 보낼경우 앱에서 백그라운드로 data를 받아올수없다.
-			//String input = "{\"notification\" : {\"title\" : \"Your Draw! \", \"body\" : \"잠시후 잠실에서 횽주횽의 이지부스트가 없어집니다!\"}, \"to\":\"/topics/ALL\"}";
 			String input = "{\"data\" : {\"title\":\"Your Draw!\",\"content\":\""+content+"\",\"drawSite\":\""+siteURL+"\"}, \"to\":\"/topics/ALL\"}";
-			//String input = "{\"notification\" : {\"title\" : \"Your Draw! \", \"body\" : \"FCM DATA보내기 테스트!\"},\"data\" : {\"title\":\"Your Draw!\",\"content\":\"잠시후 드로우가 시작됩니다!\",\"drawSite\":\"나이키 코리아\"}, \"to\":\"/topics/ALL\"}";
 			OutputStream os = conn.getOutputStream();
 
-			// 서버에서 날려서 한글 깨지는 사람은 아래처럼  UTF-8로 인코딩해서 날려주자
 			os.write(input.getBytes("UTF-8"));
 			os.flush();
 			os.close();
@@ -84,8 +80,8 @@ public class QuartzServiceImpl implements QuartzService {
 		String content 		= "";
 		String siteURL 		= "";
 
-		String productName = "";
-		String method = "";
+		String productName  = "";
+		String method 		= "";
 		int timeRemaning = 0;
 		List<Shoes> pushShoesList = shoesdao.pushShoesInfo();
 		//DB utf-8설정 필요

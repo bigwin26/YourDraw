@@ -1,5 +1,7 @@
 package com.drawSneakers.webapp.controller;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.drawSneakers.webapp.dao.BoardDao;
+import com.drawSneakers.webapp.entity.Board;
+import com.drawSneakers.webapp.entity.Shoes;
 import com.drawSneakers.webapp.service.ShoesService;
 
 /**
@@ -16,6 +21,8 @@ import com.drawSneakers.webapp.service.ShoesService;
 @Controller
 @RequestMapping("/board/*")
 public class BoardController {
+	@Autowired
+	private BoardDao boardDao;
 	@Autowired
 	private ShoesService shoesService;
 
@@ -27,5 +34,13 @@ public class BoardController {
 	@RequestMapping(value = "insert", method = RequestMethod.GET)
 	public String insert(Model model) {
 		return "board/insert";
+	}
+	@RequestMapping(value = "list", method = RequestMethod.GET)
+	public String getList(Model model) {
+		List<Board> boardList = boardDao.getList();
+		List<Shoes> shoesList = shoesService.shoesInfo();
+		model.addAttribute("list", boardList);
+		model.addAttribute("shoesList", shoesList);
+		return "board/list";
 	}
 }

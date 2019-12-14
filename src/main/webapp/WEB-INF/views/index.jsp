@@ -59,7 +59,7 @@
 					<li><a href="#detail">Detail</a></li>
 					<li><a href="#nextDraw">Next Draw</a></li>
 					<li><a href="#pastDraw">Past Draw</a></li>
-					<li class="ready"><a href="#board">Board</a></li>
+					<li class="board"><a href="${Path}/board/list">Board</a></li>
 					<!--<li><a href="#elements">Elements</a></li>-->
 				</ul>
 			</nav>
@@ -73,8 +73,6 @@
 			<%@ include file="nextDraw.jsp"%> 
 			<!-- pastDraw -->
 			<%@ include file="pastDraw.jsp"%> 
-			<!-- Board -->
-			<%@ include file="board.jsp"%> 
 		</div>
 
 		<!-- Footer -->
@@ -140,10 +138,38 @@
 		})
 
 		//보수중 이벤트
-		$(".ready").on('click', function(e) {
+/* 		$(".ready").on('click', function(e) {
 			alert("준비중 입니다.");
 			e.preventDefault();
-		})
+		}) */
+		
+		/* $("#board").on('click', function(e) {
+			
+			//var values = [];
+			
+			$.ajax({
+			    type : "GET",
+			    url : "${Path}/board/list",
+			    success: function(data){
+			    	//values = data.boardList;
+			    	 $.each(data, function(index,value){
+			    		$('table').append(
+			    		'<tr>'+
+							'<th>번호</th>'+
+							'<th>제목</th>'+
+							'<th>작성자</th>'+
+						'</tr>'+
+						'<tr>'+
+							'<td>'+value.id+'</td>'+
+							'<td>'+value.title+'</td>'+
+							'<td>'+value.writer+'</td>'+
+						'</tr>'
+					)
+			    	});
+			    //response from controller
+			    }
+			});
+		}) */
 	</script>
 </body>
 </html>

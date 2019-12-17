@@ -20,4 +20,10 @@ public class BoardDaoImpl implements BoardDao {
 		BoardDao boardDao = sqlsession.getMapper(BoardDao.class);
 		return boardDao.getList();
 	}
+
+	@Override
+	public List<Board> getDetail(int id) {
+		BoardDao boardDao = sqlsession.getMapper(BoardDao.class);
+		return boardDao.getDetail(id);
+	}
 }

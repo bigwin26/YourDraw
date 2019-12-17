@@ -22,6 +22,10 @@
 		<!-- Main -->
 		<div id="main">
 			<article id="board" class="active">
+				<button>자유게시판</button>
+				<button>데일리 게시판</button>
+				<button>발매정보 게시판</button>
+
 						<table>
 							<tr>
 								<th>번호</th>
@@ -30,17 +34,14 @@
 								<th>등록일</th>
 								<th>조회수</th>
 							</tr>
-							<c:forEach var="list" items="${list}">
 							<tr>
-								<td>${list.id}</td>
-								<td><a href="detail?id=${list.id}">${list.title}</a></td>
-								<td>${list.writer}</td>
-								<td><fmt:formatDate value="${list.regDate}" pattern="yyyy-MM-dd hh:mm"/></td>
-								<td>${list.hit}</td>
+								<td>1</td>
+								<td>테스트</td>
+								<td>admin</td>
+								<td>2019-12-14</td>
+								<td>1</td>
 							</tr>
-							</c:forEach>
 						</table>
-
 			<div class="close"></div>
 			</article>
 		</div>

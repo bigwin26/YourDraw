@@ -21,35 +21,40 @@
 	<div id="wrapper">
 		<!-- Main -->
 		<div id="main">
-			<article id="insert" class="active">
-				<form action="">
-					<table>
-						<thead>
-							<tr>NAME</tr>
-							<tr>PRODUCT_NUM</tr>
-							<tr>PRICE</tr>
-							<tr>COMPANY</tr>
-							<tr>SEX</tr>
-							<tr>COLOR</tr>
-							<tr>METHOD</tr>
-							<tr>RELEASE_DATE</tr>
-							<tr>RELEASE_URL</tr>
-							<tr>RELEASE_SITE</tr>
-						</thead>
-						<tbody>
-							<tr>hello</tr>
-						</tbody>
-					</table>
-				</form>
+			<article id="board" class="active">
+						<table border="1">
+					        <tr>
+					            <td>글제목</td><td>${detail[0].title}</td>
+					        </tr>
+					        <tr>
+					            <td>글내용</td><td>${detail[0].content}</td>
+					        </tr>
+					        <tr><td>글쓴이</td><td>${detail[0].writer}</td></tr>
+					   		<tr>
+					            <td>작성일자</td>
+					            <td><fmt:formatDate value="${detail[0].regDate}" pattern="yyyy-MM-dd hh:mm"/></td>
+					        </tr>
+					        <tr><td>조회수</td><td>${detail[0].hit}</td></tr>	        
+					    </table>
+					    <a href="#">수정</a>
+					    <a href="#">삭제</a>
+			<div class="close"></div>
 			</article>
 		</div>
 	</div>
-	<div id="bg"></div>
+	<!-- BG -->
+	<div id="bg"
+		style="background-image:url('${Path}/resources/images/shoes/${shoesList[0].product_num}-main.jpg')"></div>
+
 	<!-- Scripts -->
 	<script src="${Path}/resources/js/jquery.min.js"></script>
 	<script src="${Path}/resources/js/browser.min.js"></script>
 	<script src="${Path}/resources/js/breakpoints.min.js"></script>
-	<script src="${Path}/resources/js/util.js"></script>
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script>
+		$(".close").on('click', function(e) {
+			location.href="list";
+		})
+	</script>
 </body>
 </html>

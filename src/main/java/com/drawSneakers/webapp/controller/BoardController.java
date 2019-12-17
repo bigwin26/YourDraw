@@ -2,6 +2,7 @@ package com.drawSneakers.webapp.controller;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.drawSneakers.webapp.dao.BoardDao;
 import com.drawSneakers.webapp.entity.Board;
@@ -31,9 +33,13 @@ public class BoardController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "insert", method = RequestMethod.GET)
-	public String insert(Model model) {
-		return "board/insert";
+	@RequestMapping(value = "detail", method = RequestMethod.GET)
+	public String detail(Model model, @RequestParam int id) {
+		List<Board> boardDetail = boardDao.getDetail(id);
+		List<Shoes> shoesList = shoesService.shoesInfo();
+		model.addAttribute("detail", boardDetail);
+		model.addAttribute("shoesList", shoesList);
+		return "board/detail";
 	}
 	@RequestMapping(value = "list", method = RequestMethod.GET)
 	public String getList(Model model) {

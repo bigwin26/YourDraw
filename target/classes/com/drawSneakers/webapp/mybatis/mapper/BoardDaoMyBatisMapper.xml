@@ -9,4 +9,9 @@
 		SELECT * FROM table_board ORDER BY reg_date ASC;
 	]]>
 	</select>
+	<select id="getDetail" resultType="Board" parameterType="int">
+	 <![CDATA[
+		SELECT * FROM table_board WHERE id = #{id};
+	]]>
+	</select>
 </mapper>

@@ -7,4 +7,5 @@ import com.drawSneakers.webapp.entity.Board;
 public interface BoardDao {
 
 	List<Board> getList();
+	List<Board> getDetail(int id);
 }
